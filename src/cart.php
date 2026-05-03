@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+<?php
+$pageTitle = 'Folke. - Cart';
+$pageCss = 'cart.css';
+$activePage = 'cart';
+include 'includes/head.php';
+include 'includes/header.php';
+?>
+<main>
     <div class="checkout">
-      <header class="header">
-        <div class="block">
-          <div class="figma">
-            <div class="logo">Folke.</div>
-          </div>
-        </div>
-        <div class="navigation-pill-list">
-          <div class="navigation-pill"><div class="title">Home</div></div>
-          <div class="title-wrapper"><div class="text-wrapper">About Us</div></div>
-        </div>
-        <div class="header-auth">
-          <button class="button"><div class="div">Sign in</div></button>
-          <button class="button-2"><div class="button-3">Register</div></button>
-        </div>
-        <div class="group">
-          <button class="button-4"><div class="button-5">Cart</div></button>
-          <div class="ellipse"></div>
-        </div>
-      </header>
       <div class="text-wrapper-2">YOUR CART</div>
       <div class="text-wrapper-3">Subtotal</div>
       <div class="text-wrapper-4">Order Notes</div>
@@ -43,7 +24,7 @@
       <div class="text-wrapper-11">Size : M</div>
       <div class="text-wrapper-12">Total</div>
       <div class="product-card">
-        <div class="frame"><img class="image" src="Image_3.png" /></div>
+        <div class="frame"><img class="image" src="/assets/img/Image_3.png" alt="Product image" /></div>
       </div>
       <div class="group-2">
         <div class="rectangle"></div>
@@ -57,7 +38,7 @@
         <div class="text-wrapper-14">+</div>
         <div class="text-wrapper-15">1</div>
       </div>
-      <img class="img" src="Image_11.png" />
+      <img class="img" src="/assets/img/Image_11.png" alt="Product image" />
       <p class="p">
         Includes taxes. For international orders, additional customs charges may apply. Please check our FAQs for more
         information.
@@ -65,5 +46,7 @@
       <div class="rectangle-2"></div>
       <button class="button-6"><div class="button-7">Checkout</div></button>
     </div>
-  </body>
-</html>
+</main>
+<?php
+include 'includes/footer.php';
+?>

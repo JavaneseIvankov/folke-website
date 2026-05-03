@@ -1,34 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Folke.</title>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
-      rel="stylesheet">
-   <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-   <header class="header">
-      <img src="./folke-logo.svg" alt="Folke." class="logo">
-      <nav class="nav-center">
-         <a href="#home" class="nav-link active">Home</a>
-         <a href="#about" class="nav-link">About Us</a>
-      </nav>
-      <div class="nav-actions">
-         <a href="/auth/sign-in" class="btn btn-outline">Sign in</a>
-         <a href="/auth/register" class="btn btn-dark">Register</a>
-         <button class="btn btn-cart">
-            Cart
-            <span class="notification-dot"></span>
-         </button>
-      </div>
-   </header>
+<?php
+$pageTitle = 'Folke. - Home';
+$pageCss = 'home.css';
+$activePage = 'home';
+include 'includes/head.php';
+include 'includes/header.php';
+?>
    <main>
       <section class="hero-section">
          <div class="hero-image-wrapper">
@@ -132,43 +108,6 @@
          </div>
       </section>
    </main>
-
-   <footer class="footer">
-      <div class="footer-content">
-         <div class="footer-brand">
-            <img src="./folke-logo.svg" alt="Folke." class="footer-logo">
-            <div class="social-links">
-               <a href="#" class="social-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                     <line x1="18" y1="6" x2="6" y2="18"></line>
-                     <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-               </a>
-               <a href="#" class="social-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-               </a>
-            </div>
-         </div>
-         <div class="footer-links">
-            <h4 class="footer-title">Resources</h4>
-            <ul>
-               <li><a href="/blog">Blog</a></li>
-               <li><a href="/best-practices">Best practices</a></li>
-               <li><a href="/colors">Colors</a></li>
-               <li><a href="/color-wheel">Color wheel</a></li>
-               <li><a href="/support">Support</a></li>
-               <li><a href="/developers">Developers</a></li>
-               <li><a href="/resource-library">Resource library</a></li>
-            </ul>
-         </div>
-      </div>
-   </footer>
-</body>
-
-</html>
+<?php
+include 'includes/footer.php';
+?>

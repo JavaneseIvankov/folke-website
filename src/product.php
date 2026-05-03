@@ -1,62 +1,28 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folke. - Classic Hoodie</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <!-- Navigasi Atas (Logo, Menu Home/About, Tombol Sign In & Cart) -->
-    <header>
-        <a href="../home/index.html" class="logo">
-            <img src="../icon/logo.png" alt="Folke Logo" style="height: 35px;">
-        </a>
-
-        <nav class="nav-links">
-            <a href="../home/index.html" class="active">Home</a>
-            <a href="#">About Us</a>
-        </nav>
-
-        <div class="header-actions">
-            <button class="btn btn-outline">Sign in</button>
-            <button class="btn btn-dark">Register</button>
-            <div class="cart-icon-wrapper">
-                <img src="../icon/Ellipse 1.png" alt="Notif" class="cart-dot-svg">
-                <a href="cart.html" class="btn btn-outline">Cart</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Bagian Utama Konten  -->
-    <main class="product-container">
-        <!-- Bagian Kiri: Foto-foto Produk  -->
+<?php
+$pageTitle = 'Folke. - Product';
+$pageCss = 'product.css';
+$pageJs = 'klik_logic_rating_script.js';
+$activePage = 'product';
+include 'includes/head.php';
+include 'includes/header.php';
+?>
+<main>
+    <section class="product-container">
         <section class="gallery-section">
             <div class="main-image-wrapper">
-                <img src="../icon/weui_arrow-filled.png" alt="Prev" class="arrow prev-arrow">
-                <img src="../img/Rectangle 14.png" alt="Classic Hoodie Main" class="main-image">
-                <img src="../icon/weui_arrow-filled.png" alt="Next" class="arrow next-arrow">
+                <img src="/assets/img/weui_arrow-filled.png" alt="Prev" class="arrow prev-arrow">
+                <img src="/assets/img/Rectangle 14.png" alt="Classic Hoodie Main" class="main-image">
+                <img src="/assets/img/weui_arrow-filled.png" alt="Next" class="arrow next-arrow">
             </div>
 
             <div class="thumbnails">
-                <img src="../img/Rectangle 15.png" alt="Thumb 1" class="thumb active">
-                <img src="../img/Rectangle 16.png" alt="Thumb 2" class="thumb">
-                <img src="../img/Rectangle 17.png" alt="Thumb 3" class="thumb">
-                <img src="../img/Rectangle 18.png" alt="Thumb 4" class="thumb">
+                <img src="/assets/img/Rectangle 15.png" alt="Thumb 1" class="thumb active">
+                <img src="/assets/img/Rectangle 16.png" alt="Thumb 2" class="thumb">
+                <img src="/assets/img/Rectangle 17.png" alt="Thumb 3" class="thumb">
+                <img src="/assets/img/Rectangle 18.png" alt="Thumb 4" class="thumb">
             </div>
         </section>
 
-        <!-- Bagian Kanan: Detail Informasi Produk  -->
         <section class="details-section">
             <h1 class="product-title">Classic hoodie</h1>
 
@@ -64,7 +30,7 @@
                 <span class="price">$85,00</span>
                 <button class="btn-add-cart">
                     Add to cart
-                    <img src="../icon/Vector.png" alt="Cart Icon" class="cart-btn-icon">
+                    <img src="/assets/img/Vector.png" alt="Cart Icon" class="cart-btn-icon">
                 </button>
             </div>
 
@@ -85,7 +51,6 @@
                 </ul>
             </div>
 
-            <!-- Pilihan Varian Warna -->
             <div class="info-block">
                 <h3 class="info-title">Variant</h3>
                 <div class="variant-options">
@@ -110,10 +75,8 @@
                 </p>
             </div>
         </section>
-    </main>
-
-    <!--  JavaScript logika  rating -->
-    <script src="klik_logic_rating_script.js"></script>
-</body>
-
-</html>
+    </section>
+</main>
+<?php
+include 'includes/footer.php';
+?>

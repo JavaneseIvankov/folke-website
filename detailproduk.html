@@ -17,6 +17,7 @@
 
 <body>
 
+    <!-- Navigasi Atas (Logo, Menu Home/About, Tombol Sign In & Cart) -->
     <header>
         <a href="detailproduk.html" class="logo">
             <img src="icon/logo.png" alt="Folke Logo" style="height: 35px;">
@@ -37,7 +38,9 @@
         </div>
     </header>
 
+    <!-- Bagian Utama Konten  -->
     <main class="product-container">
+        <!-- Bagian Kiri: Foto-foto Produk  -->
         <section class="gallery-section">
             <div class="main-image-wrapper">
                 <img src="icon/weui_arrow-filled.png" alt="Prev" class="arrow prev-arrow">
@@ -53,6 +56,7 @@
             </div>
         </section>
 
+        <!-- Bagian Kanan: Detail Informasi Produk  -->
         <section class="details-section">
             <h1 class="product-title">Classic hoodie</h1>
 
@@ -81,7 +85,8 @@
                 </ul>
             </div>
 
-            <<div class="info-block">
+            <!-- Pilihan Varian Warna -->
+            <div class="info-block">
                 <h3 class="info-title">Variant</h3>
                 <div class="variant-options">
                     <button class="variant-btn" style="background-color: #8f292b;">Red</button>
@@ -89,24 +94,26 @@
                     <button class="variant-btn" style="background-color: #e0e0e0; color: #222;">White</button>
                     <button class="variant-btn" style="background-color: #6a4f44;">Brown</button>
                 </div>
-                </div>
+            </div>
 
-                <div class="info-block" style="margin-top: 25px;">
-                    <h3 class="info-title">Rate this product</h3>
-                    <div class="rating-stars" id="stars" style="display: flex; gap: 5px; margin-top: 8px;">
-                        <span class="star" data-value="1">&#9733;</span>
-                        <span class="star" data-value="2">&#9733;</span>
-                        <span class="star" data-value="3">&#9733;</span>
-                        <span class="star" data-value="4">&#9733;</span>
-                        <span class="star" data-value="5">&#9733;</span>
-                    </div>
-                    <p style="margin-top: 8px; font-size: 14px; color: #555;">
-                        Your rating: <span id="nilai-rating" style="font-weight: 600;">0</span>/5
-                    </p>
+            <div class="info-block" style="margin-top: 25px;">
+                <h3 class="info-title">Rate this product</h3>
+                <div class="rating-stars" id="stars" style="display: flex; gap: 5px; margin-top: 8px;">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
                 </div>
+                <p style="margin-top: 8px; font-size: 14px; color: #555;">
+                    Your rating: <span id="nilai-rating" style="font-weight: 600;">0</span>/5
+                </p>
+            </div>
         </section>
     </main>
 
+    <!--  JavaScript logika  rating -->
     <script src="klik_logic_rating_script.js"></script>
 </body>
+
 </html>

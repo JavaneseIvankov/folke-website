@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Folke. - Product';
 $pageCss = 'product.css';
-$pageJs = 'klik_logic_rating_script.js';
+$pageJs = ['klik_logic_rating_script.js', 'product-cart.js'];
 $activePage = 'product';
 include 'includes/head.php';
 include 'includes/header.php';
@@ -28,8 +28,15 @@ include 'includes/header.php';
 
             <div class="price-row">
                 <span class="price">$85,00</span>
-                <button class="btn-add-cart">
-                    Add to cart
+                <button
+                    class="btn-add-cart"
+                    type="button"
+                    data-product-id="classic-hoodie"
+                    data-product-name="Classic hoodie"
+                    data-product-price="85000"
+                    data-product-image="/assets/img/Rectangle 14.png"
+                >
+                    <span class="btn-add-cart-label">Add to cart</span>
                     <img src="/assets/img/Vector.png" alt="Cart Icon" class="cart-btn-icon">
                 </button>
             </div>
@@ -54,10 +61,10 @@ include 'includes/header.php';
             <div class="info-block">
                 <h3 class="info-title">Variant</h3>
                 <div class="variant-options">
-                    <button class="variant-btn" style="background-color: #8f292b;">Red</button>
-                    <button class="variant-btn" style="background-color: #222222;">Black</button>
-                    <button class="variant-btn" style="background-color: #e0e0e0; color: #222;">White</button>
-                    <button class="variant-btn" style="background-color: #6a4f44;">Brown</button>
+                    <button class="variant-btn" data-variant="Red" type="button" style="background-color: #8f292b;">Red</button>
+                    <button class="variant-btn" data-variant="Black" type="button" style="background-color: #222222;">Black</button>
+                    <button class="variant-btn" data-variant="White" type="button" style="background-color: #e0e0e0; color: #222;">White</button>
+                    <button class="variant-btn" data-variant="Brown" type="button" style="background-color: #6a4f44;">Brown</button>
                 </div>
             </div>
 

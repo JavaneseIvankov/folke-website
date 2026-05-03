@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Folke.</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+   <header class="header">
+      <img src="./folke-logo.svg" alt="Folke." class="logo">
+      <nav class="nav-center">
+         <a href="#home" class="nav-link active">Home</a>
+         <a href="#about" class="nav-link">About Us</a>
+      </nav>
+      <div class="nav-actions">
+         <a href="/auth/sign-in" class="btn btn-outline">Sign in</a>
+         <a href="/auth/register" class="btn btn-dark">Register</a>
+         <button class="btn btn-cart">
+            Cart
+            <span class="notification-dot"></span>
+         </button>
+      </div>
+   </header>
+   <main>
+      <section class="hero-section">
+         <div class="hero-image-wrapper">
+            <img class="hero-main-img"
+               src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=80"
+               alt="Smiling woman wearing a beanie" />
+         </div>
+         <div class="hero-content">
+            <div class="hero-text">
+               <h1>Wear Simple,</h1>
+               <h1>Live Well</h1>
+               <a href="#" class="btn btn-brown mt-4">Shop Now</a>
+            </div>
+            <img class="hero-secondary-img"
+               src="https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=600&auto=format&fit=crop&q=80"
+               alt="Clothes rack" />
+         </div>
+      </section>
+
+      <section class="products-section">
+         <div class="products-header">
+            <h2>Our Products</h2>
+            <div class="search-container">
+               <input type="text" class="search-input" placeholder="Search for matching products..." />
+               <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+               </svg>
+            </div>
+            <div class="filter-group">
+               <button class="filter-btn active">All</button>
+               <button class="filter-btn">Clothing</button>
+               <button class="filter-btn">Accessories</button>
+            </div>
+         </div>
+
+         <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+               <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=80"
+                  alt="Classic White Tee" class="product-img">
+               <div class="product-info">
+                  <h3 class="product-title">Classic White Tee</h3>
+                  <p class="product-category">Clothing</p>
+                  <p class="product-price">IDR 249.000,00</p>
+               </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+               <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop&q=80"
+                  alt="Vintage Jacket" class="product-img">
+               <div class="product-info">
+                  <div>
+                     <h3 class="product-title">Vintage Jacket</h3>
+                     <p class="product-category">Clothing</p>
+                  </div>
+                  <p class="product-price">IDR 1.499.000,00</p>
+               </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+               <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&auto=format&fit=crop&q=80"
+                  alt="Crimson Wool Scarf" class="product-img">
+               <div class="product-info">
+                  <h3 class="product-title">Crimson Wool Scarf</h3>
+                  <p class="product-category">Accessories</p>
+                  <p class="product-price">IDR 299.000,00</p>
+               </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card">
+               <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&auto=format&fit=crop&q=80"
+                  alt="Sienna Leather Tote" class="product-img">
+               <div class="product-info">
+                  <h3 class="product-title">Sienna Leather Tote</h3>
+                  <p class="product-category">Accessories</p>
+                  <p class="product-price">IDR 2.499.000,00</p>
+               </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="product-card">
+               <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&auto=format&fit=crop&q=80"
+                  alt="Ivory Cotton Knit" class="product-img">
+               <div class="product-info">
+                  <h3 class="product-title">Ivory Cotton Knit</h3>
+                  <p class="product-category">Clothing</p>
+                  <p class="product-price">IDR 599.000,00</p>
+               </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="product-card">
+               <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&auto=format&fit=crop&q=80"
+                  alt="Onyx Chelsea Boots" class="product-img">
+               <div class="product-info">
+                  <h3 class="product-title">Onyx Chelsea Boots</h3>
+                  <p class="product-category">Accessories</p>
+                  <p class="product-price">IDR 1.899.000,00</p>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer class="footer">
+      <div class="footer-content">
+         <div class="footer-brand">
+            <img src="./folke-logo.svg" alt="Folke." class="footer-logo">
+            <div class="social-links">
+               <a href="#" class="social-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <line x1="18" y1="6" x2="6" y2="18"></line>
+                     <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+               </a>
+               <a href="#" class="social-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+               </a>
+            </div>
+         </div>
+         <div class="footer-links">
+            <h4 class="footer-title">Resources</h4>
+            <ul>
+               <li><a href="/blog">Blog</a></li>
+               <li><a href="/best-practices">Best practices</a></li>
+               <li><a href="/colors">Colors</a></li>
+               <li><a href="/color-wheel">Color wheel</a></li>
+               <li><a href="/support">Support</a></li>
+               <li><a href="/developers">Developers</a></li>
+               <li><a href="/resource-library">Resource library</a></li>
+            </ul>
+         </div>
+      </div>
+   </footer>
+</body>
+
+</html>

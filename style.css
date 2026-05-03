@@ -273,3 +273,15 @@ header {
     .product-col { flex-direction: column; }
     .quantity-control { margin: 0 auto; }
 }
+/* ==========================================
+   CSS UNTUK FITUR RATING BINTANG
+   ========================================== */
+.star {
+    font-size: 32px;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+.star:hover {
+    color: #ffd700;
+}

@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Folke. - Classic Hoodie</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
         <a href="detailproduk.html" class="logo">
             <img src="icon/logo.png" alt="Folke Logo" style="height: 35px;">
         </a>
-        
+
         <nav class="nav-links">
             <a href="detailproduk.html" class="active">Home</a>
             <a href="#">About Us</a>
         </nav>
-        
+
         <div class="header-actions">
             <button class="btn btn-outline">Sign in</button>
             <button class="btn btn-dark">Register</button>
@@ -40,7 +44,7 @@
                 <img src="img/Rectangle 14.png" alt="Classic Hoodie Main" class="main-image">
                 <img src="icon/weui_arrow-filled.png" alt="Next" class="arrow next-arrow">
             </div>
-            
+
             <div class="thumbnails">
                 <img src="img/Rectangle 15.png" alt="Thumb 1" class="thumb active">
                 <img src="img/Rectangle 16.png" alt="Thumb 2" class="thumb">
@@ -51,7 +55,7 @@
 
         <section class="details-section">
             <h1 class="product-title">Classic hoodie</h1>
-            
+
             <div class="price-row">
                 <span class="price">$85,00</span>
                 <button class="btn-add-cart">
@@ -63,8 +67,8 @@
             <div class="info-block">
                 <h3 class="info-title">Product description</h3>
                 <p class="info-text">
-                    A clean, everyday hoodie designed for comfort and effortless style. 
-                    Crafted with a soft cotton blend and a relaxed silhouette, this hoodie offers 
+                    A clean, everyday hoodie designed for comfort and effortless style.
+                    Crafted with a soft cotton blend and a relaxed silhouette, this hoodie offers
                     warmth without feeling heavy.
                 </p>
             </div>
@@ -77,7 +81,7 @@
                 </ul>
             </div>
 
-            <div class="info-block">
+            <<div class="info-block">
                 <h3 class="info-title">Variant</h3>
                 <div class="variant-options">
                     <button class="variant-btn" style="background-color: #8f292b;">Red</button>
@@ -85,9 +89,24 @@
                     <button class="variant-btn" style="background-color: #e0e0e0; color: #222;">White</button>
                     <button class="variant-btn" style="background-color: #6a4f44;">Brown</button>
                 </div>
-            </div>
+                </div>
+
+                <div class="info-block" style="margin-top: 25px;">
+                    <h3 class="info-title">Rate this product</h3>
+                    <div class="rating-stars" id="stars" style="display: flex; gap: 5px; margin-top: 8px;">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <p style="margin-top: 8px; font-size: 14px; color: #555;">
+                        Your rating: <span id="nilai-rating" style="font-weight: 600;">0</span>/5
+                    </p>
+                </div>
         </section>
     </main>
 
+    <script src="klik_logic_rating_script.js"></script>
 </body>
 </html>

@@ -45,6 +45,14 @@ export default function CartPage({ cartItems, subtotal }: CartPageProps) {
         router.delete('/cart', { preserveScroll: true });
     }
 
+    function checkout() {
+        if (isEmpty) {
+            return;
+        }
+
+        router.post('/orders', {}, { preserveScroll: true });
+    }
+
     return (
         <main className="cart-page">
             <section className="cart-shell">
@@ -141,6 +149,8 @@ export default function CartPage({ cartItems, subtotal }: CartPageProps) {
                         <button
                             className="cart-btn cart-btn-primary"
                             type="button"
+                            onClick={checkout}
+                            disabled={isEmpty}
                         >
                             Checkout
                         </button>

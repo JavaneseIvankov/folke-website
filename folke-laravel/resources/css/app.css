@@ -423,6 +423,62 @@
       align-self: flex-end;
    }
 
+   .orders-page {
+      padding: 4rem 4%;
+   }
+
+   .orders-shell {
+      max-width: 1000px;
+      margin: 0 auto;
+   }
+
+   .orders-list {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+   }
+
+   .order-card {
+      background-color: var(--card-bg);
+      border: 1px solid #e8e8e8;
+      padding: 1.5rem;
+      border-radius: 0px;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+   }
+
+   .order-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+   }
+
+   .order-header strong {
+      font-size: 1rem;
+   }
+
+   .order-summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0.75rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+   }
+
+   .order-card ul {
+      margin: 1rem 0 0;
+      padding-left: 1.25rem;
+      list-style: disc;
+      color: var(--text-dark);
+   }
+
+   .order-card li {
+      margin-bottom: 0.5rem;
+   }
+
    .footer {
       border-top: 1px solid #eee;
       padding: 4rem 4%;

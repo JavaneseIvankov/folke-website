@@ -5,10 +5,10 @@ import React from 'react';
 const navLinks = [
     { href: '/', label: 'Home', key: 'home' },
     { href: '/about', label: 'About Us', key: 'about' },
-    { href: '/product', label: 'Products', key: 'product' },
 ];
 
 const cartLink = { href: '/cart', label: 'Cart', key: 'cart' };
+const orderHistoryLink = { href: '/orders', label: 'Order History', key: 'orders' };
 
 export default function PublicLayout({
     children,
@@ -39,13 +39,21 @@ export default function PublicLayout({
                 </nav>
                 <div className="nav-actions">
                     {isAuthenticated ? (
-                        <a
-                            href={cartLink.href}
-                            className={`btn btn-cart${activePage === cartLink.key ? 'active' : ''}`}
-                        >
-                            {cartLink.label}
-                            <span className="notification-dot"></span>
-                        </a>
+                        <>
+                            <a
+                                href={cartLink.href}
+                                className={`btn btn-cart${activePage === cartLink.key ? 'active' : ''}`}
+                            >
+                                {cartLink.label}
+                                <span className="notification-dot"></span>
+                            </a>
+                            <a
+                                href={orderHistoryLink.href}
+                                className={`btn btn-cart${activePage === orderHistoryLink.key ? 'active' : ''}`}
+                            >
+                                {orderHistoryLink.label}
+                            </a>
+                        </>
                     ) : (
                         <>
                             <a href={login().url} className="btn btn-outline">

@@ -2,7 +2,7 @@ import '../../css/product-detail.css';
 import { router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { ProductImageCarousel } from '@/components/product-image-carousel';
-import { login } from '@/routes';
+import { login } from '@/wayfinder/routes';
 import { App, Inertia as InertiaTypes } from '@/wayfinder/types';
 
 type PageProps = InertiaTypes.Pages.ProductDetail;

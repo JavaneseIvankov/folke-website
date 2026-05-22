@@ -1,4 +1,4 @@
-import { login, register } from '@/routes';
+import { login, register } from '@/wayfinder/routes';
 import { usePage } from '@inertiajs/react';
 import React from 'react';
 

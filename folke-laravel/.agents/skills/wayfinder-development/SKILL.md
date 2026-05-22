@@ -33,7 +33,7 @@ php artisan wayfinder:generate --with-form --no-interaction
 import { show, store, update } from '@/actions/App/Http/Controllers/PostController'
 
 // Named route imports...
-import { show as postShow } from '@/routes/post'
+import { show as postShow } from '@/wayfinder/routes/post'
 ```
 
 ### Common Methods

@@ -28,6 +28,7 @@ class FortifyServiceProvider extends ServiceProvider
       {
          public function toResponse($request)
          {
+            Inertia::flash('toast', ['type' => 'success', 'message' => 'You have been logged out successfully.']);
             return redirect('/');
          }
       });
@@ -36,6 +37,7 @@ class FortifyServiceProvider extends ServiceProvider
       {
          public function toResponse($request)
          {
+            Inertia::flash('toast', ['type' => 'success', 'message' => 'You have been logged in successfully.']);
             return redirect('/');
          }
       });
@@ -44,6 +46,7 @@ class FortifyServiceProvider extends ServiceProvider
       {
          public function toResponse($request)
          {
+            Inertia::flash('toast', ['type' => 'success', 'message' => 'Account created successfully.']);
             return redirect('/');
          }
       });

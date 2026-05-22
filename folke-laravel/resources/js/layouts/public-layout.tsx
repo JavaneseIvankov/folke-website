@@ -1,5 +1,5 @@
-import { login, register } from '@/wayfinder/routes';
-import { usePage } from '@inertiajs/react';
+import { login, logout, register } from '@/wayfinder/routes';
+import { Link, usePage } from '@inertiajs/react';
 import React from 'react';
 
 const navLinks = [
@@ -40,13 +40,22 @@ export default function PublicLayout({
                 <div className="nav-actions">
                     {isAuthenticated ? (
                         <>
-                            <a
-                                href={cartLink.href}
-                                className={`btn btn-cart${activePage === cartLink.key ? 'active' : ''}`}
+                            <Link
+                                href={logout().url}
+                                method={logout().method}
+                                className="btn btn-outline"
                             >
-                                {cartLink.label}
-                                <span className="notification-dot"></span>
-                            </a>
+                                Log out
+                            </Link>
+                            <>
+                            <a
+                                    href={cartLink.href}
+                                    className={`btn btn-cart${activePage === cartLink.key ? 'active' : ''}`}
+                                >
+                                    {cartLink.label}
+                                    <span className="notification-dot"></span>
+                                </a>
+                        </>
                             <a
                                 href={orderHistoryLink.href}
                                 className={`btn btn-cart${activePage === orderHistoryLink.key ? 'active' : ''}`}

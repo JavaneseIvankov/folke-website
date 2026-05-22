@@ -48,14 +48,14 @@ export default function PublicLayout({
                                 Log out
                             </Link>
                             <>
-                            <a
+                                <a
                                     href={cartLink.href}
                                     className={`btn btn-cart${activePage === cartLink.key ? 'active' : ''}`}
                                 >
                                     {cartLink.label}
                                     <span className="notification-dot"></span>
                                 </a>
-                        </>
+                            </>
                             <a
                                 href={orderHistoryLink.href}
                                 className={`btn btn-cart${activePage === orderHistoryLink.key ? 'active' : ''}`}
@@ -136,32 +136,7 @@ export default function PublicLayout({
                             </a>
                         </div>
                     </div>
-                    <div className="footer-links">
-                        <h4 className="footer-title">Resources</h4>
-                        <ul>
-                            <li>
-                                <a href="#">Blog</a>
-                            </li>
-                            <li>
-                                <a href="#">Best practices</a>
-                            </li>
-                            <li>
-                                <a href="#">Colors</a>
-                            </li>
-                            <li>
-                                <a href="#">Color wheel</a>
-                            </li>
-                            <li>
-                                <a href="#">Support</a>
-                            </li>
-                            <li>
-                                <a href="#">Developers</a>
-                            </li>
-                            <li>
-                                <a href="#">Resource library</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <div className="footer-links min-h-[15rem]"></div>
                 </div>
             </footer>
         </>

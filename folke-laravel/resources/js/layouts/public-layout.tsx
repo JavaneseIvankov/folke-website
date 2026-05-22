@@ -24,7 +24,7 @@ export default function PublicLayout({
         <>
             <header className="header sticky top-0 z-10 bg-white">
                 <a href="/">
-                    <img src="folke-logo.svg" alt="Folke." className="logo" />
+                    <img src="/folke-logo.svg" alt="Folke." className="logo" />
                 </a>
                 <nav className="nav-center">
                     {navLinks.map((link) => (
@@ -55,12 +55,12 @@ export default function PublicLayout({
                     )}
                 </div>
             </header>
-            {children}
+            <main className="min-h-[calc(100dvh-2rem)]">{children}</main>
             <footer className="footer">
                 <div className="footer-content">
                     <div className="footer-brand">
                         <img
-                            src="folke-logo.svg"
+                            src="/folke-logo.svg"
                             alt="Folke."
                             className="footer-logo"
                         />
@@ -73,9 +73,9 @@ export default function PublicLayout({
                                     viewBox="0 0 24 24"
                                     fill="none"
                                     stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                 >
                                     <line x1="18" y1="6" x2="6" y2="18"></line>
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -93,9 +93,9 @@ export default function PublicLayout({
                                     viewBox="0 0 24 24"
                                     fill="none"
                                     stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                 >
                                     <rect
                                         x="2"

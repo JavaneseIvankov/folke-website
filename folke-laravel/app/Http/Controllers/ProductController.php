@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -36,7 +37,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product->load(['images', 'materials', 'variants']);
+
+        return Inertia::render('product-detail', [
+            'product' => $product,
+        ]);
     }
 
     /**

@@ -15,6 +15,12 @@ type PageProps = {
     products: Product[];
 } & ReturnType<typeof usePage>['props'];
 
+const formatPrice = (price: number) =>
+    price.toLocaleString('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+    });  
+
 export default function Welcome() {
     const { products: _products } = usePage().props as PageProps;
     const [search, setSearch] = useState('');
@@ -22,10 +28,7 @@ export default function Welcome() {
 
     const products = _products.map((p) => ({
         ...p,
-        price_string: p.price.toLocaleString('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-        }),
+        price_string: formatPrice(p.price),
     }));
 
     const categories = products.reduce<string[]>(

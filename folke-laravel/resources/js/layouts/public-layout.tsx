@@ -38,13 +38,7 @@ export default function PublicLayout({
                     ))}
                 </nav>
                 <div className="nav-actions">
-                    <a href={login().url} className="btn btn-outline">
-                        Sign in
-                    </a>
-                    <a href={register().url} className="btn btn-dark">
-                        Register
-                    </a>
-                    {isAuthenticated && (
+                    {isAuthenticated ? (
                         <a
                             href={cartLink.href}
                             className={`btn btn-cart${activePage === cartLink.key ? 'active' : ''}`}
@@ -52,6 +46,15 @@ export default function PublicLayout({
                             {cartLink.label}
                             <span className="notification-dot"></span>
                         </a>
+                    ) : (
+                        <>
+                            <a href={login().url} className="btn btn-outline">
+                                Sign in
+                            </a>
+                            <a href={register().url} className="btn btn-dark">
+                                Register
+                            </a>
+                        </>
                     )}
                 </div>
             </header>

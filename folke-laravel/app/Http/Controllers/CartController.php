@@ -3,52 +3,67 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddCartItemRequest;
+use App\Models\Cart;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class CartController extends Controller
 {
-   public function index()
-   {
-      return Inertia::render('cart');
-   }
+    public function index(Request $request): Response
+    {
+        $items = $request->user()->cartItems()
+            ->with(['product', 'variant'])
+            ->get();
 
-   public function create(AddCartItemRequest $request)
-   {
-      $request->validate();
-      $user = $request->user();
+        $subtotal = $items->sum(fn (Cart $item) => $item->product->price * $item->quantity);
 
-      $user->cart()->create([
-         'product_id' => $request->product_id,
-         'variant_id' => $request->variant_id,
-         'quantity' => $request->quantity,
-      ]);
+        return Inertia::render('cart', [
+            'cartItems' => $items,
+            'subtotal' => $subtotal,
+        ]);
+    }
 
-      return redirect()->route('cart')->with('success', 'Item added to cart.');
-   }
+    public function store(AddCartItemRequest $request): RedirectResponse
+    {
+        $existing = $request->user()->cartItems()
+            ->where('product_id', $request->product_id)
+            ->where('variant_id', $request->variant_id)
+            ->first();
 
-   public function update(AddCartItemRequest $request)
-   {
-      $request->validate();
-      $user = $request->user();
+        if ($existing) {
+            $existing->increment('quantity', $request->quantity);
+        } else {
+            $request->user()->cartItems()->create($request->validated());
+        }
 
-      $user->cart()->where('product_id', $request->product_id)->update([
-         'variant_id' => $request->variant_id,
-         'quantity' => $request->quantity,
-      ]);
+        return back();
+    }
 
-      return redirect()->route('cart')->with('success', 'Item updated in cart.');
-   }
+    public function update(Request $request, Cart $cart): RedirectResponse
+    {
+        Gate::authorize('update', $cart);
 
-   public function destroy(Request $request)
-   {
-      $request->validate([
-         'product_id' => 'required|integer',
-      ]);
-      $user = $request->user();
+        $data = $request->validate(['quantity' => 'required|integer|min:1']);
+        $cart->update($data);
 
-      $user->cart()->where('product_id', $request->product_id)->delete();
+        return back();
+    }
 
-      return redirect()->route('cart')->with('success', 'Item removed from cart.');
-   }
+    public function destroy(Cart $cart): RedirectResponse
+    {
+        Gate::authorize('delete', $cart);
+        $cart->delete();
+
+        return back();
+    }
+
+    public function clear(Request $request): RedirectResponse
+    {
+        $request->user()->cartItems()->delete();
+
+        return back();
+    }
 }

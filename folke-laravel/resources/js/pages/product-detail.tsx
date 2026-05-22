@@ -24,18 +24,27 @@ function InfoBlock({
     );
 }
 
-function VariantButton({ variant }: { variant: App.Models.ProductVariant }) {
+function VariantButton({
+    variant,
+    isSelected,
+    onSelect,
+}: {
+    variant: App.Models.ProductVariant;
+    isSelected: boolean;
+    onSelect: () => void;
+}) {
     const isLightColor = variant.color.toLowerCase() === '#e0e0e0';
 
     return (
         <button
-            className="pd-variant-btn"
+            className={`pd-variant-btn ${isSelected ? 'is-selected' : ''}`}
             data-variant={variant.name}
             type="button"
             style={{
                 backgroundColor: variant.color,
                 color: isLightColor ? '#222' : undefined,
             }}
+            onClick={onSelect}
         >
             {variant.name}
         </button>
@@ -82,6 +91,10 @@ export default function ProductDetailPage() {
             : [product.image_url];
     const variants = product.variants ?? [];
     const materials = product.materials ?? [];
+    const [selectedVariantId, setSelectedVariantId] = useState<number | null>(
+        variants[0]?.id ?? null,
+    );
+    const [addedFeedback, setAddedFeedback] = useState(false);
     const priceDisplay = product.price.toLocaleString('id-ID', {
         style: 'currency',
         currency: 'IDR',
@@ -94,10 +107,21 @@ export default function ProductDetailPage() {
             return;
         }
 
-        // TODO:
-        // add actual cart logic here
-
-        console.log('add to cart', product.id);
+        router.post(
+            '/cart',
+            {
+                product_id: product.id,
+                variant_id: selectedVariantId,
+                quantity: 1,
+            },
+            {
+                preserveScroll: true,
+                onSuccess: () => {
+                    setAddedFeedback(true);
+                    setTimeout(() => setAddedFeedback(false), 900);
+                },
+            },
+        );
     }
 
     return (
@@ -124,7 +148,7 @@ export default function ProductDetailPage() {
                             onClick={handleAddToCart}
                         >
                             <span className="btn-add-cart-label">
-                                Add to cart
+                                {addedFeedback ? 'Added!' : 'Add to cart'}
                             </span>
 
                             <img
@@ -155,6 +179,12 @@ export default function ProductDetailPage() {
                                 <VariantButton
                                     key={variant.id}
                                     variant={variant}
+                                    isSelected={
+                                        selectedVariantId === variant.id
+                                    }
+                                    onSelect={() =>
+                                        setSelectedVariantId(variant.id)
+                                    }
                                 />
                             ))}
                         </div>

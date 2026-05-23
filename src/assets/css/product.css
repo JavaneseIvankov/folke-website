@@ -66,19 +66,30 @@ body {
 .thumbnails {
     display: flex;
     gap: 15px;
-    margin-top: 10px;
+    margin-top: 15px;
+    justify-content: center;
+    width: 100%;
+    max-width: 450px;
 }
 
 .thumb {
-    width: 80px;
-    height: 80px;
+    width: 78px;
+    height: 78px;
     object-fit: cover;
     cursor: pointer;
     border: 2px solid transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.thumb:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
 }
 
 .thumb.active {
-    border-color: #a89f91;
+    border-color: var(--color-btn-brown);
+    box-shadow: 0 4px 10px rgba(92, 56, 23, 0.2);
 }
 
 .details-section {

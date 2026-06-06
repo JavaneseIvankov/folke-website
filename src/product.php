@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Folke. - Product';
 $pageCss = 'product.css';
-$pageJs = ['klik_logic_rating_script.js', 'product-cart.js'];
+$pageJs = ['klik_logic_rating_script.js', 'product-cart.js', 'gallery.js'];
 $activePage = 'product';
 include 'includes/head.php';
 include 'includes/header.php';
@@ -16,7 +16,8 @@ include 'includes/header.php';
             </div>
 
             <div class="thumbnails">
-                <img src="/assets/img/Rectangle 15.png" alt="Thumb 1" class="thumb active">
+                <img src="/assets/img/Rectangle 14.png" alt="Thumb Red" class="thumb active">
+                <img src="/assets/img/Rectangle 15.png" alt="Thumb 1" class="thumb">
                 <img src="/assets/img/Rectangle 16.png" alt="Thumb 2" class="thumb">
                 <img src="/assets/img/Rectangle 17.png" alt="Thumb 3" class="thumb">
                 <img src="/assets/img/Rectangle 18.png" alt="Thumb 4" class="thumb">

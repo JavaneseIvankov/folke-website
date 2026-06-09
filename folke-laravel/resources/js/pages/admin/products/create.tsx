@@ -17,6 +17,10 @@ export default function AdminProductCreate() {
         category: 'Clothing',
         price: 0,
         image_url: '',
+        material: '',
+        variant_1: '',
+        variant_2: '',
+        variant_3: '',
     });
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -25,7 +29,7 @@ export default function AdminProductCreate() {
         form.post('/admin/products', {
             preserveScroll: true,
             onSuccess: () => {
-                form.reset('name', 'description', 'category', 'price', 'image_url');
+                form.reset('name', 'description', 'category', 'price', 'image_url', 'material', 'variant_1', 'variant_2', 'variant_3');
             },
         });
     }
@@ -72,14 +76,27 @@ export default function AdminProductCreate() {
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Category</label>
-                            <input
+                            <select
                                 value={form.data.category}
                                 onChange={(event) => form.setData('category', event.target.value)}
+                                className="mt-2 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 focus:border-brown focus:outline-none"
+                            >
+                                <option value="Clothing">Clothing</option>
+                                <option value="Accessories">Accessories</option>
+                            </select>
+                            {form.errors.category ? <p className="mt-2 text-sm text-red-600">{form.errors.category}</p> : null}
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Material</label>
+                            <input
+                                value={form.data.material}
+                                onChange={(event) => form.setData('material', event.target.value)}
                                 className="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-brown focus:outline-none"
                                 type="text"
-                                placeholder="Clothing"
+                                placeholder="Cotton, Leather, Nylon"
                             />
-                            {form.errors.category ? <p className="mt-2 text-sm text-red-600">{form.errors.category}</p> : null}
+                            {form.errors.material ? <p className="mt-2 text-sm text-red-600">{form.errors.material}</p> : null}
                         </div>
 
                         <div>
@@ -105,6 +122,34 @@ export default function AdminProductCreate() {
                                 placeholder="https://example.com/product.jpg"
                             />
                             {form.errors.image_url ? <p className="mt-2 text-sm text-red-600">{form.errors.image_url}</p> : null}
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Color variants</label>
+                            <div className="mt-2 grid gap-4 sm:grid-cols-3">
+                                <input
+                                    value={form.data.variant_1}
+                                    onChange={(event) => form.setData('variant_1', event.target.value)}
+                                    className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-brown focus:outline-none"
+                                    type="text"
+                                    placeholder="Variant 1"
+                                />
+                                <input
+                                    value={form.data.variant_2}
+                                    onChange={(event) => form.setData('variant_2', event.target.value)}
+                                    className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-brown focus:outline-none"
+                                    type="text"
+                                    placeholder="Variant 2"
+                                />
+                                <input
+                                    value={form.data.variant_3}
+                                    onChange={(event) => form.setData('variant_3', event.target.value)}
+                                    className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-brown focus:outline-none"
+                                    type="text"
+                                    placeholder="Variant 3"
+                                />
+                            </div>
+                            <p className="mt-2 text-xs text-gray-500">Add up to three color variants by name or hex value.</p>
                         </div>
 
                         <div>

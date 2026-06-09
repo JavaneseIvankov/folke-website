@@ -39,15 +39,35 @@ class ProductController extends Controller
             'category' => ['required', 'string', 'max:255'],
             'price' => ['required', 'integer', 'min:0'],
             'image_url' => ['nullable', 'url', 'max:2048'],
+            'material' => ['nullable', 'string', 'max:255'],
+            'variant_1' => ['nullable', 'string', 'max:255'],
+            'variant_2' => ['nullable', 'string', 'max:255'],
+            'variant_3' => ['nullable', 'string', 'max:255'],
         ]);
 
-        Product::create([
+        $product = Product::create([
             'name' => $validated['name'],
             'description' => $validated['description'] ?? '',
             'category' => $validated['category'],
             'price' => $validated['price'],
             'image_url' => $validated['image_url'] ?? 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=80',
         ]);
+
+        if (!empty($validated['material'])) {
+            $product->materials()->create([
+                'material' => $validated['material'],
+                'percentage' => 100,
+            ]);
+        }
+
+        foreach (['variant_1', 'variant_2', 'variant_3'] as $variantKey) {
+            if (!empty($validated[$variantKey])) {
+                $product->variants()->create([
+                    'name' => $validated[$variantKey],
+                    'color' => $validated[$variantKey],
+                ]);
+            }
+        }
 
         return redirect()->route('dashboard')->with('success', 'Product created successfully.');
     }

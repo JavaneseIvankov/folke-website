@@ -19,9 +19,11 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        abort_unless($request->user()?->email === 'admin@example.com', 403);
+
+        return Inertia::render('admin/products/create');
     }
 
     /**
@@ -29,7 +31,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        abort_unless($request->user()?->email === 'admin@example.com', 403);
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:2000'],
+            'category' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'integer', 'min:0'],
+            'image_url' => ['nullable', 'url', 'max:2048'],
+        ]);
+
+        Product::create([
+            'name' => $validated['name'],
+            'description' => $validated['description'] ?? '',
+            'category' => $validated['category'],
+            'price' => $validated['price'],
+            'image_url' => $validated['image_url'] ?? 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=80',
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -63,8 +83,12 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
-        //
+        abort_unless($request->user()?->email === 'admin@example.com', 403);
+
+        $product->delete();
+
+        return to_route('dashboard')->with('success', 'Product deleted successfully.');
     }
 }

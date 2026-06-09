@@ -40,6 +40,12 @@ export default function PublicLayout({
                 <div className="nav-actions">
                     {isAuthenticated ? (
                         <>
+                            {auth.user?.email === 'admin@example.com' ? (
+                                <a href="/admin/products/create" className="btn btn-brown">
+                                    Admin
+                                </a>
+                            ) : null}
+
                             <Link
                                 href={logout().url}
                                 method={logout().method}

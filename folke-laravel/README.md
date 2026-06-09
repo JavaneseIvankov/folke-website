@@ -76,10 +76,12 @@ Seed sample product data:
 php artisan db:seed --class=ProductSeeder
 ```
 
-The default seeded login is:
+The default seeded logins are:
 
 - Email: `test@example.com`
-- Password: `test123`
+  Password: `test123` (regular user)
+- Email: `admin@example.com`
+  Password: `admin123` (admin user)
 
 ## Run locally
 

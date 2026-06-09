@@ -19,6 +19,7 @@ type PageProps = {
     flash: {
         success?: string;
     };
+    order_count?: number | null;
 } & ReturnType<typeof usePage>['props'];
 
 const formatPrice = (price: number) =>
@@ -28,7 +29,7 @@ const formatPrice = (price: number) =>
     });
 
 export default function Dashboard() {
-    const { products: rawProducts, auth, flash } = usePage().props as PageProps;
+    const { products: rawProducts, auth, flash, order_count } = usePage().props as PageProps;
     const products = rawProducts.map((product) => ({
         ...product,
         price_string: formatPrice(product.price),
@@ -66,6 +67,29 @@ export default function Dashboard() {
                 {flash?.success ? (
                     <div className="rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-900">
                         {flash.success}
+                    </div>
+                ) : null}
+
+                {isAdmin ? (
+                    <div className="mt-6 grid gap-4 lg:grid-cols-2">
+                        <div className="rounded-3xl border border-border bg-white p-6 shadow-sm">
+                            <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
+                                Admin order history
+                            </p>
+                            <h2 className="mt-2 text-2xl font-semibold">All user orders</h2>
+                            <p className="mt-3 text-sm text-gray-500">
+                                Check order history across every user account in the application.
+                            </p>
+                            <div className="mt-6 flex items-center justify-between gap-4">
+                                <div>
+                                    <p className="text-xs uppercase tracking-[0.3em] text-gray-500">Total orders</p>
+                                    <p className="mt-2 text-3xl font-semibold">{order_count ?? 0}</p>
+                                </div>
+                                <Link href="/admin/orders" className="btn btn-brown">
+                                    View all orders
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 ) : null}
 

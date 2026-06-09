@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -16,6 +17,17 @@ class OrderController extends Controller
         $orders = $request->user()->orders()->latest()->get();
 
         return Inertia::render('orders', [
+            'orders' => $orders,
+        ]);
+    }
+
+    public function adminIndex(Request $request): Response
+    {
+        abort_unless($request->user()?->email === 'admin@example.com', 403);
+
+        $orders = Order::with('user')->latest()->get();
+
+        return Inertia::render('admin/orders', [
             'orders' => $orders,
         ]);
     }

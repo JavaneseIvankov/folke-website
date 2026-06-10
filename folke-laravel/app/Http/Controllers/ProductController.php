@@ -87,9 +87,15 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Request $request, Product $product)
     {
-        //
+        abort_unless($request->user()?->email === 'admin@example.com', 403);
+
+        $product->load(['materials', 'variants']);
+
+        return Inertia::render('admin/products/edit', [
+            'product' => $product,
+        ]);
     }
 
     /**
@@ -97,7 +103,47 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        abort_unless($request->user()?->email === 'admin@example.com', 403);
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:2000'],
+            'category' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'integer', 'min:0'],
+            'image_url' => ['nullable', 'url', 'max:2048'],
+            'material' => ['nullable', 'string', 'max:255'],
+            'variants' => ['nullable', 'array'],
+            'variants.*.name' => ['required', 'string', 'max:255'],
+            'variants.*.color' => ['required', 'string', 'max:255'],
+        ]);
+
+        $product->update([
+            'name' => $validated['name'],
+            'description' => $validated['description'] ?? '',
+            'category' => $validated['category'],
+            'price' => $validated['price'],
+            'image_url' => $validated['image_url'] ?? 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=80',
+        ]);
+
+        $product->materials()->delete();
+        if (! empty($validated['material'])) {
+            $product->materials()->create([
+                'material' => $validated['material'],
+                'percentage' => 100,
+            ]);
+        }
+
+        $product->variants()->delete();
+        if (! empty($validated['variants'])) {
+            foreach ($validated['variants'] as $variant) {
+                $product->variants()->create([
+                    'name' => $variant['name'],
+                    'color' => $variant['color'],
+                ]);
+            }
+        }
+
+        return redirect()->route('dashboard')->with('success', 'Product updated successfully.');
     }
 
     /**

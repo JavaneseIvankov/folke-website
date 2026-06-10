@@ -29,7 +29,12 @@ const formatPrice = (price: number) =>
     });
 
 export default function Dashboard() {
-    const { products: rawProducts, auth, flash, order_count } = usePage().props as PageProps;
+    const {
+        products: rawProducts,
+        auth,
+        flash,
+        order_count,
+    } = usePage().props as PageProps;
     const products = rawProducts.map((product) => ({
         ...product,
         price_string: formatPrice(product.price),
@@ -122,7 +127,11 @@ export default function Dashboard() {
                                     className="group relative"
                                 >
                                     <Link
-                                        href={`/products/${product.id}`}
+                                        href={
+                                            isAdmin
+                                                ? `/admin/products/${product.id}/edit`
+                                                : `/products/${product.id}`
+                                        }
                                         className="block transition duration-300 hover:shadow-lg"
                                     >
                                         <ProductCard product={product} />

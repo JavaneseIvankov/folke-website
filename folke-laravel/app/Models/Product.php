@@ -12,6 +12,7 @@ class Product extends Model
         'price',
         'category',
         'image_url',
+        'sales_count',
     ];
 
     public function images()

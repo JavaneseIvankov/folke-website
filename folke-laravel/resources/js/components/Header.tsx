@@ -16,23 +16,28 @@ const orderHistoryLink = {
 export default function Header({ activePage }: { activePage?: string }) {
     const { auth } = usePage().props as any;
     const isAuthenticated = auth?.user !== null;
+    const role = auth?.user?.role ?? 'user';
     const isAdmin = auth?.user?.role === 'admin';
 
     return (
-        <header className="header sticky top-0 z-10 bg-white">
+        <header
+            className="header sticky top-0 z-10 bg-white"
+            data-user-role={role}
+        >
             <a href="/">
                 <img src="/folke-logo.svg" alt="Folke." className="logo" />
             </a>
             <nav className="nav-center">
-                {navLinks.map((link) => (
-                    <a
-                        key={link.key}
-                        href={link.href}
-                        className={`nav-link ${activePage === link.key ? 'active' : ''}`}
-                    >
-                        {link.label}
-                    </a>
-                ))}
+                {!isAdmin &&
+                    navLinks.map((link) => (
+                        <a
+                            key={link.key}
+                            href={link.href}
+                            className={`nav-link ${activePage === link.key ? 'active' : ''}`}
+                        >
+                            {link.label}
+                        </a>
+                    ))}
             </nav>
             <div className="nav-actions">
                 {isAuthenticated ? (

@@ -549,6 +549,10 @@
          flex-direction: row;
       }
 
+      .header[data-user-role="admin"] {
+         flex-direction: row;
+      }
+
       .footer-content {
          flex-direction: column;
          gap: 2rem;

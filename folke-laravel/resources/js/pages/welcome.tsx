@@ -19,7 +19,7 @@ const formatPrice = (price: number) =>
     price.toLocaleString('id-ID', {
         style: 'currency',
         currency: 'IDR',
-    });  
+    });
 
 export default function Welcome() {
     const { products: _products } = usePage().props as PageProps;

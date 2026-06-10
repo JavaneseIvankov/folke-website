@@ -71,7 +71,7 @@ export default function AdminProductEdit() {
                             This form updates the product immediately.
                         </p>
                     </div>
-                    <Link href="/dashboard" className="btn btn-outline">
+                    <Link href="/admin/dashboard" className="btn btn-outline">
                         Back to dashboard
                     </Link>
                 </div>

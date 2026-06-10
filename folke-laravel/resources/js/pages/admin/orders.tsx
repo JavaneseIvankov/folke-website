@@ -57,7 +57,10 @@ export default function AdminOrdersPage() {
                                 application.
                             </p>
                         </div>
-                        <Link href="/dashboard" className="btn btn-outline">
+                        <Link
+                            href="/admin/dashboard"
+                            className="btn btn-outline"
+                        >
                             Back to dashboard
                         </Link>
                     </div>

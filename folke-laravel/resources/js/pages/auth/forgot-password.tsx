@@ -6,7 +6,6 @@ import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { login } from '@/wayfinder/routes';
 import { email } from '@/wayfinder/routes/password';
 
 export default function ForgotPassword({ status }: { status?: string }) {
@@ -56,7 +55,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
                 <div className="space-x-1 text-center text-sm text-muted-foreground">
                     <span>Or, return to</span>
-                    <TextLink href={login()}>log in</TextLink>
+                    <TextLink href={'/login'}>log in</TextLink>
                 </div>
             </div>
         </>

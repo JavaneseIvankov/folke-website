@@ -43,7 +43,10 @@ export default function OrdersPage() {
                     <h1>Order History</h1>
 
                     {isEmpty ? (
-                        <p>Your past orders will appear here once you place them.</p>
+                        <p>
+                            Your past orders will appear here once you place
+                            them.
+                        </p>
                     ) : (
                         <div className="orders-list">
                             {orders.map((order) => (
@@ -52,10 +55,16 @@ export default function OrdersPage() {
                                         <strong>{order.order_number}</strong>
                                         <span>{order.status}</span>
                                     </div>
-                                    <p>{new Date(order.created_at).toLocaleString()}</p>
+                                    <p>
+                                        {new Date(
+                                            order.created_at,
+                                        ).toLocaleString()}
+                                    </p>
                                     <div className="order-summary">
                                         <span>{order.item_count} item(s)</span>
-                                        <strong>{formatIDR(order.total_amount)}</strong>
+                                        <strong>
+                                            {formatIDR(order.total_amount)}
+                                        </strong>
                                     </div>
                                     <ul>
                                         {order.items.map((item, index) => (

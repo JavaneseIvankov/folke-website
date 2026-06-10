@@ -8,7 +8,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 require __DIR__.'/settings.php';

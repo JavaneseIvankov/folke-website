@@ -1,20 +1,21 @@
-import { login, logout, register } from '@/wayfinder/routes';
 import { Link, usePage } from '@inertiajs/react';
 import React from 'react';
 
-const navLinks:
-{
-   href: string;
-   label: string;
-   key: string
-}[]
- = [
-   //  { href: '/about', label: 'About Us', key: 'about' },
-   //  { href: '/', label: 'Home', key: 'home' },
+const navLinks: {
+    href: string;
+    label: string;
+    key: string;
+}[] = [
+    //  { href: '/about', label: 'About Us', key: 'about' },
+    //  { href: '/', label: 'Home', key: 'home' },
 ];
 
 const cartLink = { href: '/cart', label: 'Cart', key: 'cart' };
-const orderHistoryLink = { href: '/orders', label: 'Order History', key: 'orders' };
+const orderHistoryLink = {
+    href: '/orders',
+    label: 'Order History',
+    key: 'orders',
+};
 
 export default function DashboardLayout({
     children,
@@ -44,28 +45,30 @@ export default function DashboardLayout({
                     ))}
                 </nav>
                 <div className="nav-actions">
-                     <Link
-                        href={logout().url}
-                        method={logout().method}
+                    <Link
+                        href={'/logout'}
+                        method={'post'}
                         className="btn btn-outline"
-                     >
+                    >
                         Log out
-                     </Link>
+                    </Link>
                     {isAuthenticated ? (
                         <>
                             {auth.user?.email === 'admin@example.com' ? (
-                                <a href="/admin/products/create" className="btn btn-brown">
+                                <a
+                                    href="/admin/products/create"
+                                    className="btn btn-brown"
+                                >
                                     Admin
                                 </a>
                             ) : null}
-
                         </>
                     ) : (
                         <>
-                            <a href={login().url} className="btn btn-outline">
+                            <a href={'/login'} className="btn btn-outline">
                                 Sign in
                             </a>
-                            <a href={register().url} className="btn btn-dark">
+                            <a href={'/register'} className="btn btn-dark">
                                 Register
                             </a>
                         </>

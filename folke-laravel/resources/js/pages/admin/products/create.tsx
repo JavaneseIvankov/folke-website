@@ -58,7 +58,7 @@ export default function AdminProductCreate() {
                             visible to users.
                         </p>
                     </div>
-                    <Link href="/dashboard" className="btn btn-outline">
+                    <Link href="/admin/dashboard" className="btn btn-outline">
                         Back to dashboard
                     </Link>
                 </div>

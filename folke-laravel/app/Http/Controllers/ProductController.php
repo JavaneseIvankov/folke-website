@@ -69,7 +69,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('dashboard')->with('success', 'Product created successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -143,7 +143,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('dashboard')->with('success', 'Product updated successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -155,6 +155,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return to_route('dashboard')->with('success', 'Product deleted successfully.');
+        return to_route('admin.dashboard')->with('success', 'Product deleted successfully.');
     }
 }

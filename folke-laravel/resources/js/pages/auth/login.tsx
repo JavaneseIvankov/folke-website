@@ -1,7 +1,6 @@
 import { Form, Head, Link } from '@inertiajs/react';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
-import { register } from '@/wayfinder/routes';
 import { store } from '@/wayfinder/routes/login';
 import { request } from '@/wayfinder/routes/password';
 
@@ -138,7 +137,7 @@ export default function Login({ status, canResetPassword }: Props) {
                         <p className="text-center text-sm text-[var(--text-muted)]">
                             Don't have an account?{' '}
                             <Link
-                                href={register()}
+                                href={'/register'}
                                 tabIndex={5}
                                 className="text-[var(--text-dark)] underline underline-offset-4 hover:text-[var(--primary-color)]"
                             >

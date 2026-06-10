@@ -1,7 +1,6 @@
 import { Form, Head, Link } from '@inertiajs/react';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
-import { login } from '@/wayfinder/routes';
 import { store } from '@/wayfinder/routes/register';
 
 type Props = {
@@ -40,10 +39,12 @@ export default function Register({ passwordRules }: Props) {
                                 tabIndex={1}
                                 autoComplete="name"
                                 placeholder="Full name"
-                                className="w-full border border-[#e0e0e0] bg-transparent px-3 py-2 text-sm outline-none transition-colors focus:border-[var(--primary-color)]"
+                                className="w-full border border-[#e0e0e0] bg-transparent px-3 py-2 text-sm transition-colors outline-none focus:border-[var(--primary-color)]"
                             />
                             {errors.name && (
-                                <p className="text-sm text-red-600">{errors.name}</p>
+                                <p className="text-sm text-red-600">
+                                    {errors.name}
+                                </p>
                             )}
                         </div>
 
@@ -62,10 +63,12 @@ export default function Register({ passwordRules }: Props) {
                                 tabIndex={2}
                                 autoComplete="email"
                                 placeholder="email@example.com"
-                                className="w-full border border-[#e0e0e0] bg-transparent px-3 py-2 text-sm outline-none transition-colors focus:border-[var(--primary-color)]"
+                                className="w-full border border-[#e0e0e0] bg-transparent px-3 py-2 text-sm transition-colors outline-none focus:border-[var(--primary-color)]"
                             />
                             {errors.email && (
-                                <p className="text-sm text-red-600">{errors.email}</p>
+                                <p className="text-sm text-red-600">
+                                    {errors.email}
+                                </p>
                             )}
                         </div>
 
@@ -86,20 +89,30 @@ export default function Register({ passwordRules }: Props) {
                                     autoComplete="new-password"
                                     placeholder="Password"
                                     passwordrules={passwordRules}
-                                    className="w-full border border-[#e0e0e0] bg-transparent px-3 py-2 pr-10 text-sm outline-none transition-colors focus:border-[var(--primary-color)]"
+                                    className="w-full border border-[#e0e0e0] bg-transparent px-3 py-2 pr-10 text-sm transition-colors outline-none focus:border-[var(--primary-color)]"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword((v) => !v)}
                                     className="absolute inset-y-0 right-0 flex items-center px-3 text-[var(--text-muted)] hover:text-[var(--text-dark)]"
-                                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                                    aria-label={
+                                        showPassword
+                                            ? 'Hide password'
+                                            : 'Show password'
+                                    }
                                     tabIndex={-1}
                                 >
-                                    {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                                    {showPassword ? (
+                                        <EyeOff className="size-4" />
+                                    ) : (
+                                        <Eye className="size-4" />
+                                    )}
                                 </button>
                             </div>
                             {errors.password && (
-                                <p className="text-sm text-red-600">{errors.password}</p>
+                                <p className="text-sm text-red-600">
+                                    {errors.password}
+                                </p>
                             )}
                         </div>
 
@@ -120,20 +133,30 @@ export default function Register({ passwordRules }: Props) {
                                     autoComplete="new-password"
                                     placeholder="Confirm password"
                                     passwordrules={passwordRules}
-                                    className="w-full border border-[#e0e0e0] bg-transparent px-3 py-2 pr-10 text-sm outline-none transition-colors focus:border-[var(--primary-color)]"
+                                    className="w-full border border-[#e0e0e0] bg-transparent px-3 py-2 pr-10 text-sm transition-colors outline-none focus:border-[var(--primary-color)]"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowConfirm((v) => !v)}
                                     className="absolute inset-y-0 right-0 flex items-center px-3 text-[var(--text-muted)] hover:text-[var(--text-dark)]"
-                                    aria-label={showConfirm ? 'Hide password' : 'Show password'}
+                                    aria-label={
+                                        showConfirm
+                                            ? 'Hide password'
+                                            : 'Show password'
+                                    }
                                     tabIndex={-1}
                                 >
-                                    {showConfirm ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                                    {showConfirm ? (
+                                        <EyeOff className="size-4" />
+                                    ) : (
+                                        <Eye className="size-4" />
+                                    )}
                                 </button>
                             </div>
                             {errors.password_confirmation && (
-                                <p className="text-sm text-red-600">{errors.password_confirmation}</p>
+                                <p className="text-sm text-red-600">
+                                    {errors.password_confirmation}
+                                </p>
                             )}
                         </div>
 
@@ -144,13 +167,15 @@ export default function Register({ passwordRules }: Props) {
                             disabled={processing}
                             className="mt-2 w-full bg-[var(--primary-color)] px-4 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
                         >
-                            {processing ? 'Creating account...' : 'Create account'}
+                            {processing
+                                ? 'Creating account...'
+                                : 'Create account'}
                         </button>
 
                         <p className="text-center text-sm text-[var(--text-muted)]">
                             Already have an account?{' '}
                             <Link
-                                href={login()}
+                                href={'/login'}
                                 tabIndex={6}
                                 className="text-[var(--text-dark)] underline underline-offset-4 hover:text-[var(--primary-color)]"
                             >

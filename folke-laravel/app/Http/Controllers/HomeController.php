@@ -25,7 +25,7 @@ class HomeController extends Controller
             ? Order::count()
             : null;
 
-        return Inertia::render('dashboard', [
+        return Inertia::render('admin/dashboard', [
             'products' => $products,
             'order_count' => $orderCount,
         ]);

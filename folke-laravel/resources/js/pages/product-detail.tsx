@@ -2,7 +2,6 @@ import '../../css/product-detail.css';
 import { router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { ProductImageCarousel } from '@/components/product-image-carousel';
-import { login } from '@/wayfinder/routes';
 import { App, Inertia as InertiaTypes } from '@/wayfinder/types';
 
 type PageProps = InertiaTypes.Pages.ProductDetail;
@@ -102,7 +101,7 @@ export default function ProductDetailPage() {
 
     function handleAddToCart() {
         if (!auth.user) {
-            router.visit(login());
+            router.visit('/login');
 
             return;
         }

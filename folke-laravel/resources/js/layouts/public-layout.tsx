@@ -1,4 +1,3 @@
-import { login, logout, register } from '@/wayfinder/routes';
 import { Link, usePage } from '@inertiajs/react';
 import React from 'react';
 
@@ -8,7 +7,11 @@ const navLinks = [
 ];
 
 const cartLink = { href: '/cart', label: 'Cart', key: 'cart' };
-const orderHistoryLink = { href: '/orders', label: 'Order History', key: 'orders' };
+const orderHistoryLink = {
+    href: '/orders',
+    label: 'Order History',
+    key: 'orders',
+};
 
 export default function PublicLayout({
     children,
@@ -41,14 +44,17 @@ export default function PublicLayout({
                     {isAuthenticated ? (
                         <>
                             {auth.user?.email === 'admin@example.com' ? (
-                                <a href="/admin/products/create" className="btn btn-brown">
+                                <a
+                                    href="/admin/products/create"
+                                    className="btn btn-brown"
+                                >
                                     Admin
                                 </a>
                             ) : null}
 
                             <Link
-                                href={logout().url}
-                                method={logout().method}
+                                href={'/logout'}
+                                method={'post'}
                                 className="btn btn-outline"
                             >
                                 Log out
@@ -71,10 +77,10 @@ export default function PublicLayout({
                         </>
                     ) : (
                         <>
-                            <a href={login().url} className="btn btn-outline">
+                            <a href={'/login'} className="btn btn-outline">
                                 Sign in
                             </a>
-                            <a href={register().url} className="btn btn-dark">
+                            <a href={'/register'} className="btn btn-dark">
                                 Register
                             </a>
                         </>

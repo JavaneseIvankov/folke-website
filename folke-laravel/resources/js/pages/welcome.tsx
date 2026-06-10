@@ -13,7 +13,7 @@ type Product = {
 
 type PageProps = {
     products: Product[];
-    recommended_product: Product | null;
+    recommended_products: Product[];
 } & ReturnType<typeof usePage>['props'];
 
 const formatPrice = (price: number) =>
@@ -23,7 +23,7 @@ const formatPrice = (price: number) =>
     });
 
 export default function Welcome() {
-    const { products: _products, recommended_product } = usePage().props as PageProps;
+    const { products: _products, recommended_products } = usePage().props as PageProps;
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('All');
 
@@ -32,12 +32,10 @@ export default function Welcome() {
         price_string: formatPrice(p.price),
     }));
 
-    const recommendedProduct = recommended_product
-        ? {
-              ...recommended_product,
-              price_string: formatPrice(recommended_product.price),
-          }
-        : null;
+    const recommendedProducts = (recommended_products || []).map((p) => ({
+        ...p,
+        price_string: formatPrice(p.price),
+    }));
 
     const categories = products.reduce<string[]>(
         (acc, product) => {
@@ -87,15 +85,17 @@ export default function Welcome() {
                         />
                     </div>
                 </section>
-                {recommendedProduct && (
+                {recommendedProducts.length > 0 && (
                     <section className="products-section pb-0!">
                         <div className="products-header">
                             <h2>Most Sold</h2>
                         </div>
                         <div className="products-grid">
-                            <a href={`/products/${recommendedProduct.id}`}>
-                                <ProductCard product={recommendedProduct} />
-                            </a>
+                            {recommendedProducts.map((product) => (
+                                <a key={product.id} href={`/products/${product.id}`}>
+                                    <ProductCard product={product} />
+                                </a>
+                            ))}
                         </div>
                     </section>
                 )}

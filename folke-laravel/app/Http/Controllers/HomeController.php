@@ -12,11 +12,11 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::all();
-        $recommendedProduct = Product::orderByDesc('sales_count')->first();
+        $recommendedProducts = Product::orderByDesc('sales_count')->take(3)->get();
 
         return Inertia::render('welcome', [
             'products' => $products,
-            'recommended_product' => $recommendedProduct,
+            'recommended_products' => $recommendedProducts,
         ]);
     }
 

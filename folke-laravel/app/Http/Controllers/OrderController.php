@@ -61,6 +61,10 @@ class OrderController extends Controller
             'items' => $items,
         ]);
 
+        foreach ($cartItems as $item) {
+            $item->product->increment('sales_count', $item->quantity);
+        }
+
         $user->cartItems()->delete();
 
         return redirect()->route('orders.index');

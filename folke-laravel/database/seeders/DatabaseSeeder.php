@@ -32,5 +32,36 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(ProductSeeder::class);
+
+        $user = User::where('role', 'user')->first();
+        $products = \App\Models\Product::all();
+
+        for ($i = 0; $i < 20; $i++) {
+            $selectedProducts = $products->random(rand(1, 3));
+            
+            $totalAmount = 0;
+            $items = [];
+            foreach ($selectedProducts as $product) {
+                $quantity = rand(1, 3);
+                $totalAmount += $product->price * $quantity;
+                $items[] = [
+                    'product_id' => $product->id,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => $quantity,
+                ];
+                
+                $product->increment('sales_count', $quantity);
+            }
+
+            \App\Models\Order::create([
+                'user_id' => $user->id,
+                'order_number' => strtoupper(uniqid('ORD-')),
+                'item_count' => collect($items)->sum('quantity'),
+                'total_amount' => $totalAmount,
+                'status' => 'completed',
+                'items' => $items,
+            ]);
+        }
     }
 }

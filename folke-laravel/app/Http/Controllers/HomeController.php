@@ -21,9 +21,7 @@ class HomeController extends Controller
     public function dashboard(Request $request)
     {
         $products = Product::latest()->get();
-        $orderCount = $request->user()?->email === 'admin@example.com'
-            ? Order::count()
-            : null;
+        $orderCount = Order::count();
 
         return Inertia::render('admin/dashboard', [
             'products' => $products,

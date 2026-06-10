@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => 'test123',
             'email_verified_at' => now(),
+            'role' => 'user',
         ]);
 
         User::factory()->create([
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => 'admin123',
             'email_verified_at' => now(),
+            'role' => 'admin',
         ]);
 
         $this->call(ProductSeeder::class);

@@ -21,7 +21,6 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        abort_unless($request->user()?->email === 'admin@example.com', 403);
 
         return Inertia::render('admin/products/create');
     }
@@ -31,7 +30,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        abort_unless($request->user()?->email === 'admin@example.com', 403);
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -89,7 +87,6 @@ class ProductController extends Controller
      */
     public function edit(Request $request, Product $product)
     {
-        abort_unless($request->user()?->email === 'admin@example.com', 403);
 
         $product->load(['materials', 'variants']);
 
@@ -103,7 +100,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        abort_unless($request->user()?->email === 'admin@example.com', 403);
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -151,7 +147,6 @@ class ProductController extends Controller
      */
     public function destroy(Request $request, Product $product)
     {
-        abort_unless($request->user()?->email === 'admin@example.com', 403);
 
         $product->delete();
 

@@ -23,8 +23,6 @@ class OrderController extends Controller
 
     public function adminIndex(Request $request): Response
     {
-        abort_unless($request->user()?->email === 'admin@example.com', 403);
-
         $orders = Order::with('user')->latest()->get();
 
         return Inertia::render('admin/orders', [

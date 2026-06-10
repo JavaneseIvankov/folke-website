@@ -40,9 +40,9 @@ class ProductController extends Controller
             'price' => ['required', 'integer', 'min:0'],
             'image_url' => ['nullable', 'url', 'max:2048'],
             'material' => ['nullable', 'string', 'max:255'],
-            'variant_1' => ['nullable', 'string', 'max:255'],
-            'variant_2' => ['nullable', 'string', 'max:255'],
-            'variant_3' => ['nullable', 'string', 'max:255'],
+            'variants' => ['nullable', 'array'],
+            'variants.*.name' => ['required', 'string', 'max:255'],
+            'variants.*.color' => ['required', 'string', 'max:255'],
         ]);
 
         $product = Product::create([
@@ -53,18 +53,18 @@ class ProductController extends Controller
             'image_url' => $validated['image_url'] ?? 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=80',
         ]);
 
-        if (!empty($validated['material'])) {
+        if (! empty($validated['material'])) {
             $product->materials()->create([
                 'material' => $validated['material'],
                 'percentage' => 100,
             ]);
         }
 
-        foreach (['variant_1', 'variant_2', 'variant_3'] as $variantKey) {
-            if (!empty($validated[$variantKey])) {
+        if (! empty($validated['variants'])) {
+            foreach ($validated['variants'] as $variant) {
                 $product->variants()->create([
-                    'name' => $validated[$variantKey],
-                    'color' => $validated[$variantKey],
+                    'name' => $variant['name'],
+                    'color' => $variant['color'],
                 ]);
             }
         }

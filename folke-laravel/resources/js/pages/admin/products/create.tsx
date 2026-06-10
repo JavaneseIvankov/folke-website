@@ -18,9 +18,8 @@ export default function AdminProductCreate() {
         price: 0,
         image_url: '',
         material: '',
-        variant_1: '',
-        variant_2: '',
-        variant_3: '',
+        material: '',
+        variants: [{ name: '', color: '' }],
     });
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -29,7 +28,15 @@ export default function AdminProductCreate() {
         form.post('/admin/products', {
             preserveScroll: true,
             onSuccess: () => {
-                form.reset('name', 'description', 'category', 'price', 'image_url', 'material', 'variant_1', 'variant_2', 'variant_3');
+                form.reset(
+                    'name',
+                    'description',
+                    'category',
+                    'price',
+                    'image_url',
+                    'material',
+                    'variants',
+                );
             },
         });
     }
@@ -66,7 +73,7 @@ export default function AdminProductCreate() {
                         onSubmit={handleSubmit}
                         className="space-y-6 border border-[#ccc] bg-white p-6 shadow-sm"
                     >
-                        <div>
+                        <div className="py-2">
                             <label className="block text-sm font-medium text-gray-700">
                                 Name
                             </label>
@@ -86,7 +93,7 @@ export default function AdminProductCreate() {
                             ) : null}
                         </div>
 
-                        <div>
+                        <div className="py-2">
                             <label className="block text-sm font-medium text-gray-700">
                                 Category
                             </label>
@@ -107,7 +114,7 @@ export default function AdminProductCreate() {
                             ) : null}
                         </div>
 
-                        <div>
+                        <div className="py-2">
                             <label className="block text-sm font-medium text-gray-700">
                                 Material
                             </label>
@@ -127,7 +134,7 @@ export default function AdminProductCreate() {
                             ) : null}
                         </div>
 
-                        <div>
+                        <div className="py-2">
                             <label className="block text-sm font-medium text-gray-700">
                                 Price (IDR)
                             </label>
@@ -151,7 +158,7 @@ export default function AdminProductCreate() {
                             ) : null}
                         </div>
 
-                        <div>
+                        <div className="py-2">
                             <label className="block text-sm font-medium text-gray-700">
                                 Image URL
                             </label>
@@ -174,55 +181,90 @@ export default function AdminProductCreate() {
                             ) : null}
                         </div>
 
-                        <div>
+                        <div className="py-2">
                             <label className="block text-sm font-medium text-gray-700">
-                                Color variants
+                                Variants (Name & Color)
                             </label>
-                            <div className="mt-2 grid gap-4 sm:grid-cols-3">
-                                <input
-                                    value={form.data.variant_1}
-                                    onChange={(event) =>
-                                        form.setData(
-                                            'variant_1',
-                                            event.target.value,
-                                        )
-                                    }
-                                    className="focus:border-brown w-full border border-gray-300 px-4 py-3 focus:outline-none"
-                                    type="text"
-                                    placeholder="Variant 1"
-                                />
-                                <input
-                                    value={form.data.variant_2}
-                                    onChange={(event) =>
-                                        form.setData(
-                                            'variant_2',
-                                            event.target.value,
-                                        )
-                                    }
-                                    className="focus:border-brown w-full border border-gray-300 px-4 py-3 focus:outline-none"
-                                    type="text"
-                                    placeholder="Variant 2"
-                                />
-                                <input
-                                    value={form.data.variant_3}
-                                    onChange={(event) =>
-                                        form.setData(
-                                            'variant_3',
-                                            event.target.value,
-                                        )
-                                    }
-                                    className="focus:border-brown w-full border border-gray-300 px-4 py-3 focus:outline-none"
-                                    type="text"
-                                    placeholder="Variant 3"
-                                />
-                            </div>
-                            <p className="mt-2 text-xs text-gray-500">
-                                Add up to three color variants by name or hex
-                                value.
-                            </p>
+                            {form.data.variants.map((variant, index) => (
+                                <div
+                                    key={index}
+                                    className="mt-2 flex items-center gap-4"
+                                >
+                                    <input
+                                        value={variant.name}
+                                        onChange={(event) => {
+                                            const newVariants = [
+                                                ...form.data.variants,
+                                            ];
+                                            newVariants[index].name =
+                                                event.target.value;
+                                            form.setData(
+                                                'variants',
+                                                newVariants,
+                                            );
+                                        }}
+                                        className="focus:border-brown w-full border border-gray-300 px-4 py-3 focus:outline-none"
+                                        type="text"
+                                        placeholder="Variant name (e.g., Large)"
+                                        required
+                                    />
+                                    <input
+                                        value={variant.color}
+                                        onChange={(event) => {
+                                            const newVariants = [
+                                                ...form.data.variants,
+                                            ];
+                                            newVariants[index].color =
+                                                event.target.value;
+                                            form.setData(
+                                                'variants',
+                                                newVariants,
+                                            );
+                                        }}
+                                        className="focus:border-brown w-full border border-gray-300 px-4 py-3 focus:outline-none"
+                                        type="text"
+                                        placeholder="Color hex (e.g., #ffffff)"
+                                        required
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            const newVariants =
+                                                form.data.variants.filter(
+                                                    (_, i) => i !== index,
+                                                );
+                                            form.setData(
+                                                'variants',
+                                                newVariants,
+                                            );
+                                        }}
+                                        className="text-red-600 hover:text-red-800"
+                                        title="Remove Variant"
+                                    >
+                                        &times;
+                                    </button>
+                                </div>
+                            ))}
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    form.setData('variants', [
+                                        ...form.data.variants,
+                                        { name: '', color: '' },
+                                    ]);
+                                }}
+                                className="mt-2 text-sm text-blue-600 hover:underline"
+                            >
+                                + Add another variant
+                            </button>
+                            {form.errors.variants ? (
+                                <p className="mt-2 text-sm text-red-600">
+                                    {form.errors.variants}
+                                </p>
+                            ) : null}
                         </div>
 
-                        <div>
+                        <div className="py-2">
                             <label className="block text-sm font-medium text-gray-700">
                                 Description
                             </label>

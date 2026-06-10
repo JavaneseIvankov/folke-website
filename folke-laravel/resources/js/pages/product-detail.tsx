@@ -23,6 +23,18 @@ function InfoBlock({
     );
 }
 
+function isLightColor(hex: string) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness > 127.5;
+}
+
 function VariantButton({
     variant,
     isSelected,
@@ -32,7 +44,7 @@ function VariantButton({
     isSelected: boolean;
     onSelect: () => void;
 }) {
-    const isLightColor = variant.color.toLowerCase() === '#e0e0e0';
+    const isLight = isLightColor(variant.color);
 
     return (
         <button
@@ -41,7 +53,7 @@ function VariantButton({
             type="button"
             style={{
                 backgroundColor: variant.color,
-                color: isLightColor ? '#222' : undefined,
+                color: isLight ? '#222' : undefined,
             }}
             onClick={onSelect}
         >

@@ -18,7 +18,6 @@ export default function AdminProductCreate() {
         price: 0,
         image_url: '',
         material: '',
-        material: '',
         variants: [{ name: '', color: '' }],
     });
 
@@ -208,24 +207,43 @@ export default function AdminProductCreate() {
                                         placeholder="Variant name (e.g., Large)"
                                         required
                                     />
-                                    <input
-                                        value={variant.color}
-                                        onChange={(event) => {
-                                            const newVariants = [
-                                                ...form.data.variants,
-                                            ];
-                                            newVariants[index].color =
-                                                event.target.value;
-                                            form.setData(
-                                                'variants',
-                                                newVariants,
-                                            );
-                                        }}
-                                        className="focus:border-brown w-full border border-gray-300 px-4 py-3 focus:outline-none"
-                                        type="text"
-                                        placeholder="Color hex (e.g., #ffffff)"
-                                        required
-                                    />
+                                    <div className="flex w-full items-center gap-2">
+                                        <input
+                                            value={variant.color || '#ffffff'}
+                                            onChange={(event) => {
+                                                const newVariants = [
+                                                    ...form.data.variants,
+                                                ];
+                                                newVariants[index].color =
+                                                    event.target.value;
+                                                form.setData(
+                                                    'variants',
+                                                    newVariants,
+                                                );
+                                            }}
+                                            className="h-12 w-12 flex-shrink-0 cursor-pointer border-0 bg-transparent p-0"
+                                            type="color"
+                                            title="Choose color"
+                                        />
+                                        <input
+                                            value={variant.color}
+                                            onChange={(event) => {
+                                                const newVariants = [
+                                                    ...form.data.variants,
+                                                ];
+                                                newVariants[index].color =
+                                                    event.target.value;
+                                                form.setData(
+                                                    'variants',
+                                                    newVariants,
+                                                );
+                                            }}
+                                            className="focus:border-brown w-full border border-gray-300 px-4 py-3 focus:outline-none"
+                                            type="text"
+                                            placeholder="Color hex (e.g., #ffffff)"
+                                            required
+                                        />
+                                    </div>
                                     <button
                                         type="button"
                                         onClick={() => {

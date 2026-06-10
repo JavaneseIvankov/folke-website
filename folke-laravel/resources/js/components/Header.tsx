@@ -39,7 +39,7 @@ export default function Header({ activePage }: { activePage?: string }) {
                     <>
                         {auth.user?.email === 'admin@example.com' ? (
                             <a
-                                href="/admin/products/create"
+                                href="/admin/dashboard"
                                 className="btn btn-brown"
                             >
                                 Admin
